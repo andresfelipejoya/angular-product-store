@@ -1,0 +1,10 @@
+<div class="card w-{{ size }}">
+  <img class="card-image" [src]="item.image" [alt]="item.title">
+  <h1 class="card-title">{{ item.title }}</h1>
+  <p class="card-description">{{ item.description }}</p>
+  <p class="card-price">{{ item.price | currency }}</p>
+  <div class="card-actions">
+    <button class="btn btn-primary" (click)="onButton1Click(item)">{{textButton1}}</button>
+    <button class="btn btn-secondary" (click)="onButton2Click(item)">{{textButton2}}</button>
+  </div>
+</div>

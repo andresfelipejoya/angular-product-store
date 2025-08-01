@@ -1,0 +1,6 @@
+<form class="card flex flex-col space-y-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <input class="input" type="text" placeholder="Username" formControlName="username" autocomplete="username" required>
+    <input class="input" type="email" placeholder="Email" formControlName="email" autocomplete="email" required>
+    <input class="input" type="password" placeholder="Password" formControlName="password" autocomplete="password" required>
+    <button class="btn" type="submit">Register</button>
+</form>

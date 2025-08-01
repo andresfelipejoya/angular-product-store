@@ -1,0 +1,13 @@
+<div class="flex flex-col w-full items-center justify-center bg-gray-100">
+    <form class="card lg:w-lg sm:w-sm flex flex-col space-y-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input class="input" type="text" placeholder="Username" formControlName="username" autocomplete="username"
+            required>
+        <input class="input" type="password" placeholder="Password" formControlName="password" autocomplete="password"
+            required>
+        <button [disabled]="isSubmitting" class="btn" type="submit">Login</button>
+        <a class="ancor" href="/forgot-password">Forgot Password?</a>
+        <a class="ancor" href="/register">Register</a>
+    </form>
+
+    <h2 *ngIf="errorMessage">{{ errorMessage() }}</h2>
+</div>
