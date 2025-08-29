@@ -28,7 +28,7 @@ jobs:
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/angular-product-store
+          path: ./dist/angular-product-store/browser
 
   deploy:
     runs-on: ubuntu-latest
