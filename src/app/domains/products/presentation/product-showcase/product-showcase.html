@@ -1,6 +1,6 @@
 <div class="flex flex-wrap gap-6 justify-center">
   @for (product of products(); track product.id) {
-  <app-card [item]="product" textButton1="Añadir" textButton2="Ver"
+  <app-card [item]="product" size="sm" textButton1="Añadir" textButton2="Ver"
     (button1emit)="onAddToCart(product)" (button2emit)="onViewDetails(product)"></app-card>
   }
 </div>

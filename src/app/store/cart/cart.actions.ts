@@ -11,4 +11,14 @@ export const removeFromCart = createAction(
     props<{ productId: number }>()
 );
 
+export const updateQuantity = createAction(
+    '[Cart] Update Item Quantity',
+    props<{ productId: number, quantity: number }>(),
+);
+
+export const deleteQuantity = createAction(
+    '[Cart] Delete Item Quantity',
+    props<{ productId: number, quantity: number }>()
+);
+
 export const clearCart = createAction('[Cart] Clear');

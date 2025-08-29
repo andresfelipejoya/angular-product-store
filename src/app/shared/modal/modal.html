@@ -1,0 +1,26 @@
+@if(isOpen) {
+<div class="card w-sm z-50 fixed inset right-1">
+    <h2 class="modal-title">{{ modalData.title }}</h2>
+    <div class="h-64 overflow-y-auto">
+
+        @for(content of modalData.content; track content.id) {
+            <p class="modal-text line-clamp-1 font-bold">{{ content.text }}</p>
+            <div class="modal-content flex flex-wrap gap-2 p-4 justify-center items-center">
+                @if(content.image) {
+                    <img class="modal-image w-10" [src]="content.image" [alt]="content.text">
+                }
+                <p class="modal-price">{{ content.price | currency }}</p>
+                <span class="font-bold cursor-pointer text-3xl" (click)="onRemoveItem(content.id)"> - </span>
+                <span class="modal-quantity">{{ content.quantity }} Uni</span>
+                <span class="font-bold cursor-pointer text-3xl" (click)="onAddItem(content.id)"> + </span>
+            </div>
+        }
+    </div>
+    @if(modalData.actions) {
+    <div class="modal-actions flex justify-end gap-2 p-4">
+        <button class="btn btn-primary" (click)="onConfirm()">{{ modalData.actions.confirm }}</button>
+        <button class="btn btn-secondary" (click)="onClose()">{{ modalData.actions.close || 'Close' }}</button>
+    </div>
+    }
+</div>
+}

@@ -23,7 +23,7 @@ export class Card {
     description: '',
     image: ''
   };
-  @Input() size: 'sm' | 'md' | 'lg' | 'full' | string = '80';
+  @Input() size: 'sm' | 'md' | 'lg' | 'full' = 'md';
   @Input() textButton1: string = '';
   @Input() textButton2: string = '';
 

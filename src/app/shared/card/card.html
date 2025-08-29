@@ -1,4 +1,9 @@
-<div class="card w-{{ size }}">
+<div class="card" [ngClass]="{
+  'w-full': size === 'full',
+  'w-lg': size === 'lg',
+  'w-md': size === 'md',
+  'w-sm': size === 'sm'
+}">
   <img class="card-image" [src]="item.image" [alt]="item.title">
   <h1 class="card-title">{{ item.title }}</h1>
   <p class="card-description">{{ item.description }}</p>

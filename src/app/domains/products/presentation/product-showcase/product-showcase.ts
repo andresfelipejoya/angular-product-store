@@ -1,10 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Product } from '../../domain/products.entity';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Card } from '../../../../shared/card/card';
 import { ProductsUseCase } from '../../application/products.use-case';
-import { addToCart } from '../../../../store/cart/cart.actions';
+import { addToCart, updateQuantity } from '../../../../store/cart/cart.actions';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { selectCartItems } from '../../../../store/cart/cart.selectors';
 
 @Component({
   selector: 'app-product-showcase',
@@ -13,12 +15,12 @@ import { addToCart } from '../../../../store/cart/cart.actions';
   styleUrl: './product-showcase.css'
 })
 export class ProductShowcase {
-
+  private store = inject(Store);
   public products = signal<Product[]>([]);
+  cartItems = toSignal(this.store.select(selectCartItems), { initialValue: [] });
 
   constructor(
     private productsUseCase: ProductsUseCase,
-    private store: Store,
   ) { }
 
 
@@ -34,8 +36,19 @@ export class ProductShowcase {
   }
 
   public onAddToCart(product: Product): void {
-    console.log(`Producto añadido al carrito: ${product.id}`);
-    this.store.dispatch(addToCart({ product }));
+    const existProductInCart = this.cartItems()
+      .find(item => item.id === product.id);
+
+    if (existProductInCart) {
+      this.store.dispatch(updateQuantity({
+        productId: existProductInCart.id,
+        quantity: 1
+      }));
+    } else {
+      this.store.dispatch(addToCart({
+        product
+      }));
+    }
   }
 
   public onViewDetails(product: Product): void {
