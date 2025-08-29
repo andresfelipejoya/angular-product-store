@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fake-store": {
+    "angular-product-store": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "fake-store:build:production"
+              "buildTarget": "angular-product-store:build:production"
             },
             "development": {
-              "buildTarget": "fake-store:build:development"
+              "buildTarget": "angular-product-store:build:development"
             }
           },
           "defaultConfiguration": "development"

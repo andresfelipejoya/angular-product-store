@@ -9,5 +9,5 @@ import { Navbar } from './shared/navbar/navbar';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('fake-store');
+  protected readonly title = signal('angular-product-store');
 }
